@@ -1,15 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
-var https = require('https');
-
+var authService = require('../service/auth');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  var CB_URL = 'http://o.dp:3000/ok';
-  var OAUTH_URL = 'https://sso.dper.com/oauth2.0/authorize?client_id=apollo&redirect_uri=' + CB_URL;
-  
-  res.redirect(OAUTH_URL);
+  if (authService.checkLogin(req)) {
+    res.redirect('./api/list');
+    return;
+  }
+
+  res.redirect('./login');
 });
 
 module.exports = router;

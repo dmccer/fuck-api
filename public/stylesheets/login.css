@@ -1,0 +1,67 @@
+.page {
+  width: 300px;
+}
+.avatar {
+  width: 80px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  background-color: #cccccc;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+}
+.field {
+  height: 3em;
+  line-height: 3em;
+  margin-bottom: 1em;
+  background-color: #fff;
+}
+.field input[type="text"],
+.field input[type="password"],
+.field input[type="submit"],
+.field select {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
+  font-size: 1em;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid #dcdcdc;
+  border-radius: 0;
+  vertical-align: middle;
+}
+
+.field label {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.login-btn {
+  background-color: #ff8400;
+  position: relative;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 1em;
+}
+.login-btn input {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 1;
+  top: 0;
+  font-size: 1em;
+  opacity: 0;
+}
+.forget-pwd-btn {
+  color: #0088cc;
+  margin: 0;
+  text-decoration: none;
+}
+

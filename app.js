@@ -4,10 +4,16 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+
+require('./lib/db');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var ok = require('./routes/ok');
+var api = require('./routes/api');
+var login = require('./routes/login');
+var oauth = require('./routes/oauth');
+var register = require('./routes/register');
+var param = require('./routes/param');
 
 var app = express();
 
@@ -20,11 +26,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(session({ secret: 'qwertyuiop', cookie: { maxAge: 3600000 }}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/ok', ok);
+app.use('/api', api);
+app.use('/login', login);
+app.use('/oauth', oauth);
+app.use('/register', register);
+app.use('/param', param);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,6 +65,13 @@ app.use(function(err, req, res, next) {
         message: err.message,
         error: {}
     });
+});
+
+var debug = require('debug')('fuck-api');
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
 });
 
 

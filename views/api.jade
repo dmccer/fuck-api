@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  div(class='page')
+    if error
+     div.alert
+      | #{error}
+    ul(class="list")
+      each val, index in apis
+        li= val.url + ' ' +  val.method
+
+    a(class="btn" href="/api") 添加接口

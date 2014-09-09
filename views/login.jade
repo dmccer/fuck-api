@@ -1,0 +1,21 @@
+extends login-layout
+
+block content
+  div(class='page phone')
+    div.login-panel
+      div.avatar
+        img(src='images/icon-people@2x.png')
+      if error
+        div.alert
+          | #{error}
+      form(action="/login" method="post")
+        div.field
+          input(type='text' name='username' placeholder='工号/域账户/邮箱')
+        div.field
+          input(type='password' name='password' placeholder='密码')
+        div(class='btn login-btn')
+          | 登 录
+          input(type='submit' value='登录')
+        a(class='btn forget-pwd-btn' href='./register') 注 册
+
+    

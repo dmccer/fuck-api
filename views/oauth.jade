@@ -1,0 +1,29 @@
+extends login-layout
+
+block content
+  div(class='page phone')
+    div.login-panel
+      div.avatar
+        img(src='images/icon-people@2x.png')
+      if error
+        div.alert
+          | #{error}
+      form(action="/oauth" method="post")
+        div.field
+          input(type='text' name='authHost' placeholder='host')
+        div.field
+          input(type='text' name='clientId' placeholder='client_id')
+        div.field
+          input(type='password' name='clientSecret' placeholder='secret')
+        div.field
+          input(type='text' name='redirectUrl' placeholder='redirect_uri')
+        div.field
+          input(type='text' name='username' placeholder='工号/域账户/邮箱')
+        div.field
+          input(type='password' name='password' placeholder='密码')
+        div(class='btn login-btn')
+          | 保 存
+          input(type='submit' value='登录')
+        a(class='btn forget-pwd-btn')
+
+    

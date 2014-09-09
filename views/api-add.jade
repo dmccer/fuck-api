@@ -1,0 +1,38 @@
+extends login-layout
+
+block content
+  div(class='page phone')
+    div.login-panel
+      if error
+        div.alert
+          | #{error}
+      form(action="/api" method="post")
+        div.field
+          input(type='text' name='url' placeholder='接口地址, 如: https://s.dper.com/cu/customer')
+        div.field
+          input(type='text' name='method' data-id="method" placeholder='method, 如: GET, POST')
+        div.field
+          select(name="oauthId")
+            each val, index in oauths
+              option(value="#{val._id}") #{val.clientId} - #{val.username} - #{val.redirectUrl}
+        div(class="field hide" data-id="post-data-type")
+          label(for="postjson") JSON
+            input(type='radio' name='emulateJSON' id="postjson" value="true")
+          label(for="postform") FORM
+            input(type='radio' name='emulateJSON' id="postform" value="false")
+        div.field
+          select(name="dataType")
+              option(value="json" selected) 返回值类型: json
+              option(value="html") 返回值类型: html
+              option(value="xml") 返回值类型: xml
+              option(value="text") 返回值类型: text
+        div.field
+          input(type="text" name="data" placeholder="请求数据: { a: 1, b: 2}")
+        div(class='btn login-btn')
+          | 添 加
+          input(type='submit' value='添加')
+  script(src="javascripts/lib/jquery.min.js")
+  script(src="javascripts/api-add.js")
+
+
+    

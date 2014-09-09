@@ -1,0 +1,64 @@
+html {
+  background-color: #e5e5e5;
+}
+body {
+  margin: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  outline: none;
+}
+address {
+  font-style: normal;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix {
+  *zoom: 1;
+}
+.hide,
+.Hide {
+  display: none;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+.page, .phone {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.phone {
+  width: 90%;
+}
+
+.alert {
+  background-color: #fff9f1;
+  line-height: 1.2em;
+  color: #737373;
+  padding: 0.8em;
+  margin-bottom: 1em;
+}
+
+.btn {
+  display: block;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  width: 100%;
+}

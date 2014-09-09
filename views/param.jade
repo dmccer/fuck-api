@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  div.panel(data-id="data-view")
+
+  div.panel
+    h1 参数设置
+    div.field
+      select(name="dataType" data-id="data-type")
+        option(value="number") Number
+        option(value="string") String
+        option(value="Array") Array
+        option(value="Object") Object
+    
+    div.field
+      input(type="submit" value="保存")
+      input(type="submit" value="取消")
+  
+
+  script(type="text/template" id="tpl-normal")
+    div.panel(data-type="number|string")
+      h2 Number 或 String
+      div.field
+        input(name="key" placeholder="key")
+      div.field
+        input(name="value" placeholder="value")
+  
+  script(type="text/template" id="tpl-array")
+    div.panel(data-type="array")
+      h2 Array
+      div.field
+        input(name="key" placeholder="key")
+      div.field
+        select(name="dataType")
+          option(value="number") Number
+          option(value="string") String
+          option(value="Array") Array
+          option(value="Object") Object
+
+  script(type="text/template" id="tpl-object")
+    div.panel(data-type="object")
+      h2 Object
+      div.field
+        input(name="key" placeholder="key")
+      div.field 添加 key - value
+
+  script(src="javascripts/lib/jquery.min.js")
+    script(src="javascripts/lib/underscore-min.js")
+  script(src="javascripts/param.js")
