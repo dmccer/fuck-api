@@ -13,7 +13,7 @@ var paramSchema = new Schema({
   // 参数默认值
   defaultValue: Schema.Types.Mixed,
   // 是否必填
-  required: Boolean,
+  required: { type: Boolean, default: false },
   // 添加时间
   addTime: { type: Date, default: Date.now },
   // 更新时间
