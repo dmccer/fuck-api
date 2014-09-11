@@ -13,11 +13,11 @@ var paramSchema = new Schema({
   // 参数默认值
   defaultValue: Schema.Types.Mixed,
   // 是否必填
-  required: { type: Boolean, default: false },
+  required: { type: Boolean, 'default': false },
   // 添加时间
-  addTime: { type: Date, default: Date.now },
+  addTime: { type: Date, 'default': Date.now },
   // 更新时间
-  updateTime: { type: Date, default: Date.now }
+  updateTime: { type: Date, 'default': Date.now }
 });
 
 module.exports = mongoose.model('Param', paramSchema);

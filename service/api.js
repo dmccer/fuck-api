@@ -11,9 +11,7 @@ var createParam = function (params, callback) {
 
   async.map(params, function (param, callback) {
     if (_.isArray(param)) {
-      return createParam(param, function (err, results) {
-        param = results;
-      });
+      return createParam(param, callback);
     }
 
     if (_.isObject(param)  &&
@@ -40,10 +38,15 @@ module.exports = {
   },
 
   create: function (data, callback) {
-    createParam(data.data, function (err, results) {
-      data.data = results;
+    var params = JSON.parse(data.data);
+    delete data.data;
 
-      API.create(data, callback);
+    API.create(data, function (err, res) {
+      createParam(params, function (err, results) {
+        res.data = results;
+
+        res.save(callback);
+      });
     });
   }
 };

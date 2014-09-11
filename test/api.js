@@ -49,11 +49,11 @@ describe('api service', function () {
       while (i < 3) {
         rs.push([
           {
-            type: 'String',
-            values: ['r' + i],
-            defaultValue: 'r' + i,
-            required: false
-          }
+          type: 'String',
+          values: ['r' + i],
+          defaultValue: 'r' + i,
+          required: false
+        }
         ]);
 
         i++;
@@ -110,14 +110,14 @@ describe('api service', function () {
       var Param = {
         create: function (param, callback) {
           cb();
-          callback();
+          callback(null, _.uniqueId('tt'));
         }
       };
 
       API.__set__('Param', Param);
 
       createParam(params, function (err, results) {
-        expect(cb).to.have.been.callCount(params.length + users.length + records.length);
+        expect(cb).to.have.been.callCount(params.length + users.length * 2 + records.length);
       });
     });
 

@@ -51,8 +51,6 @@ router.get('/list', function(req, res) {
         return;
       }
 
-      console.log(apis)
-
       if (apis) {
         res.render('api', {
           apis: apis
@@ -83,8 +81,6 @@ router.post('/', function (req, res) {
 
   api.userId = user._id;
 
-  console.log(api)
-
   apiService.create(api, function (err, api) {
     if (err) {
       console.log('添加接口失败:\n' + err);
@@ -104,12 +100,12 @@ router.post('/', function (req, res) {
         });
         return;
       }
-      
+
       res.render('api-add', {
         error: '添加成功',
         oauths: oauths
       });
     });
   });
-})
+});
 module.exports = router;

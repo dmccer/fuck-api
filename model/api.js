@@ -19,9 +19,9 @@ var apiSchema = new Schema({
   // 接口返回值类型: json, html, xml, text
   dataType: String,
   // 该接口添加时间
-  addTime: { type: Date, default: Date.now },
+  addTime: { type: Date, 'default': Date.now },
   // 该接口更新时间
-  updateTime: { type: Date, default: Date.now }
+  updateTime: { type: Date, 'default': Date.now }
 });
 
 module.exports = mongoose.model('API', apiSchema);
