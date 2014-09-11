@@ -8,7 +8,7 @@ var apiService = require('../service/api');
 
 router.get('/', function (req, res) {
   if (!authService.checkLogin(req)) {
-    res.redirect('login');
+    res.redirect('/login');
     return;
   }
 
@@ -66,12 +66,12 @@ router.get('/list', function(req, res) {
     return;
   }
 
-  res.redirect('login');
+  res.redirect('/login');
 });
 
 router.post('/', function (req, res) {
   if (!authService.checkLogin(req)) {
-    res.redirect('login');
+    res.redirect('/login');
     return;
   }
 

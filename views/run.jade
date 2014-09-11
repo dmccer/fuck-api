@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  div(class='page')
+    if error
+     div.alert
+      | #{error}
+    ul(class="list")
+      each val, index in rs
+        li= val.url + ' ' +  val.method + ' ' + val.param

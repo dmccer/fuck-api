@@ -7,6 +7,8 @@ block content
       | #{error}
     ul(class="list")
       each val, index in apis
-        li= val.url + ' ' +  val.method
+        li
+          a(href="/run/#{val._id}")
+            | #{val.url + ' ' + val.method}
 
     a(class="btn" href="/api") 添加接口
