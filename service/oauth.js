@@ -2,9 +2,9 @@ var OAuth = require('../model/oauth');
 
 module.exports = {
   find: function (data, callback) {
-    OAuth.find(data, callback)
+    OAuth.find(data, callback);
   },
-  
+
   findOne: function (data, callback) {
     OAuth.findOne(data, callback);
   },
@@ -12,5 +12,4 @@ module.exports = {
   create: function (data, callback) {
     OAuth.create(data, callback);
   }
-}
-
+};

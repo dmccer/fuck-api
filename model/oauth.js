@@ -10,9 +10,9 @@ var oAuthSchema = new Schema({
   redirectUrl: String,
   userId: Schema.Types.ObjectId,
   // 创建时间
-  addTime: { type: Date, default: Date.now },
+  addTime: { type: Date, 'default': Date.now },
   // 更新时间
-  updateTime: { type: Date, default: Date.now }
+  updateTime: { type: Date, 'default': Date.now }
 });
 
 module.exports = mongoose.model('OAuth', oAuthSchema);
