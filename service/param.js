@@ -1,32 +1,44 @@
 var Param = require('../model/param');
 var async = require('async');
 
-module.exports = {
-  find: function (data, callback) {
-    Param.find(data, callback);
-  },
+var findRecurive = function(values, callback) {
+  if (!_.isArray(values)) {
+    callback(null);
+    return;
+  }
 
-  findOne: function (data, callback) {
-    Param.findOne(data, callback);
-  },
+  async.each(values, function(value, callback) {
+    if (_.isArray(value)) {
+      return findRecurive(value, callback);
+    }
 
-  findRecurive: function (pid, callback) {
     Param.findOne({
-      _id: pid
-    }, function (err, param) {
+      _id: value
+    }, function(err, param) {
       if (['Object', 'Array'].indexOf(param.type) !== -1 && param.values && param.values.length) {
-        // TODO
-        // find param recursive
-        async.each(param.values, function (param, callback) {
-
-        }, callback);
+        return findRecurive(param.values, function(err, res) {
+          param.values = res;
+          callback(err, param);
+        });
       }
 
       callback(err, param);
     });
+  }, callback);
+};
+
+module.exports = {
+  find: function(data, callback) {
+    Param.find(data, callback);
   },
 
-  create: function (data, callback) {
+  findOne: function(data, callback) {
+    Param.findOne(data, callback);
+  },
+
+  findRecurive: findRecurive,
+
+  create: function(data, callback) {
     Param.create(data, callback);
   }
 };

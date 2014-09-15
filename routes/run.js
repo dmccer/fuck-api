@@ -10,31 +10,31 @@ var paramService = require('../service/param');
 
 var async = require('async');
 
-router.get('/:aid', function (req, res) {
+router.get('/:aid', function(req, res) {
   var user = req.session && req.session.user;
 
   if (user) {
     async.waterfall([
-      function (callback) {
+
+      function(callback) {
         apiService.findOne({
           _id: req.params.aid
         }, callback);
       },
 
-      function (api, callback) {
+      function(api, callback) {
         oAuthService.findOne({
           _id: api.oauthId
-        }, function (err, oauth) {
+        }, function(err, oauth) {
           callback(err, _.defaults({}, api.toJSON(), oauth.toJSON()));
         });
       },
 
-      function (api, callback) {
-        console.log(api);
+      function(api, callback) {
         callback(null, []);
         // paramService.findOne();
       }
-    ], function (err, result) {
+    ], function(err, result) {
       if (err) {
         res.render('run', {
           error: '查询接口信息失败',
