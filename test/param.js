@@ -13,11 +13,13 @@ var rewire = require('rewire');
 var ParamService = rewire('../service/param');
 
 describe('param service', function() {
-  describe('find params', function() {
-    var Param = API.__get('Param');
-
-    it('should return 3', function() {
-
+  describe('find Object', function() {
+    it('should return 3', function(done) {
+      ParamService.findRecurive("5417fa7349abb0000042f8cc", function (err, results) {
+        expect(results).to.be.an('Object');
+        assert.equal(results.type, 'Object');
+        done();
+      });
     });
   });
 });

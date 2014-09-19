@@ -15,7 +15,6 @@ router.get('/:aid', function(req, res) {
 
   if (user) {
     async.waterfall([
-
       function(callback) {
         apiService.findOne({
           _id: req.params.aid
@@ -31,8 +30,13 @@ router.get('/:aid', function(req, res) {
       },
 
       function(api, callback) {
-        callback(null, []);
-        // paramService.findOne();
+        paramService.findRecurive(api.data.length && api.data[0], function (err, param) {
+          api.data = [param.toJSON()];
+          callback(err, api);
+        });
+      },
+
+      function (api, callback) {
       }
     ], function(err, result) {
       if (err) {
@@ -45,7 +49,7 @@ router.get('/:aid', function(req, res) {
       }
 
       res.render('run', {
-        rs: result
+        rs: [result]
       });
     });
   }
